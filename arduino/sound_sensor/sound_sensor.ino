@@ -56,7 +56,7 @@ bool sendLevel(int level) {
 
 void setup() {
   Serial.begin(9600);
-  while (!Serial && millis() < 5000);  // Wait for the Serial Monitor, but not forever
+  while (!Serial && millis() < 3000);  // Wait for the Serial Monitor, but not forever
 
   connectWiFi();
 }

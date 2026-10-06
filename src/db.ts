@@ -1,5 +1,6 @@
 import mysql, { Pool } from 'mysql2/promise'
 import "dotenv/config";
+import {SoundEvent} from "./soundEvent";
 
 function requireEnv(name: string): string {
     const value = process.env[name];
@@ -27,4 +28,10 @@ export default pool;
 
 export async function insertSoundEvent(level: number): Promise<void> {
     await pool.execute('INSERT INTO sound_events (level) VALUES (?)', [level]);
+}
+
+export async function getSoundEvents(): Promise<SoundEvent[]> {
+    const [rows] = await pool.query<SoundEvent[]>(
+        'SELECT id, level, recorded_at FROM sound_events ORDER BY recorded_at DESC LIMIT 100');
+    return rows;
 }

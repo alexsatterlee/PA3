@@ -7,9 +7,8 @@ yarn-debug.log*
 yarn-error.log*
 /.pnp
 .pnp.js
-
 .vscode/*
 
 .idea/
 .env
-/distIf
+/dist
